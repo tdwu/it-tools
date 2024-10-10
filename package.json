@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && NODE_OPTIONS=--max_old_space_size=4096 vite build",
+    "build": "vite build",
     "preview": "vite preview --port 5050",
     "test": "npm run test:unit",
     "test:unit": "vitest --environment jsdom",
@@ -140,6 +140,7 @@
     "unplugin-icons": "^0.17.0",
     "unplugin-vue-components": "^0.25.0",
     "vite": "^4.4.9",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-pwa": "^0.16.0",
     "vite-plugin-vue-markdown": "^0.23.5",
     "vite-svg-loader": "^4.0.0",

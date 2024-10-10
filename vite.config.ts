@@ -15,7 +15,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
-import viteCompression from 'vite-plugin-compression'
+import viteCompression from 'vite-plugin-compression';  
 
 const baseUrl = process.env.BASE_URL ?? '/it/';
 
@@ -24,7 +24,7 @@ export default defineConfig({
   server:{
     host: '0.0.0.0',
   },
-  plugins: [
+  plugins: [  
     VueI18n({
       runtimeOnly: true,
       jitCompilation: true,

@@ -88,63 +88,10 @@ import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
 import { tool as yamlViewer } from './yaml-viewer';
 
-export const toolsByCategory: ToolCategory[] = [
+export const toolsByCategoryBackup: ToolCategory[] = [
   {
-    name: 'Development',
-    components: [
-      listConverter,
-      urlParser,
-      urlEncoder,
-      textDiff,
-      jsonDiff,
-      gitMemo,
-      crontabGenerator,
-      sqlPrettify,
-      chmodCalculator,
-      dockerRunToDockerComposeConverter,
-      regexTester,
-      regexMemo,
-      jwtParser,
-      base64StringConverter,
-      base64FileConverter,
-    ],
-  },
-  {
-    name: 'Web',
-    components: [
-      jsonViewer,
-      jsonMinify,
-      xmlFormatter,
-      yamlViewer,
-      userAgentParser,
-      httpStatusCodes,
-      htmlEntities,
-      deviceInformation,
-      basicAuthGenerator,
-      metaTagGenerator,
-      otpCodeGeneratorAndValidator,
-      mimeTypes,
-      keycodeInfo,
-      slugifyString,
-      htmlWysiwygEditor,
-      safelinkDecoder,
-      qrCodeGenerator, 
-      wifiQrCodeGenerator, 
-      svgPlaceholderGenerator, 
-      cameraRecorder,
-      emailNormalizer,
-    ],
-  },
-  {
-    name: 'Text',
-    components: [
-      numeronymGenerator,
-      asciiTextDrawer,
-      textStatistics,
-      emojiPicker,
-      stringObfuscator,
-      loremIpsumGenerator,
-    ],
+    name: 'Crypto',
+    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, ulidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
   },
   {
     name: 'Converter',
@@ -152,6 +99,8 @@ export const toolsByCategory: ToolCategory[] = [
       dateTimeConverter,
       baseConverter,
       romanNumeralConverter,
+      base64StringConverter,
+      base64FileConverter,
       colorConverter,
       caseConverter,
       textToNatoAlphabet,
@@ -161,7 +110,7 @@ export const toolsByCategory: ToolCategory[] = [
       yamlToToml,
       jsonToYaml,
       jsonToToml,
-      jsonToCsv,
+      listConverter,
       tomlToJson,
       tomlToYaml,
       xmlToJson,
@@ -170,13 +119,52 @@ export const toolsByCategory: ToolCategory[] = [
     ],
   },
   {
-    name: 'Network',
+    name: 'Web',
     components: [
-      randomPortGenerator,ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
+      urlEncoder,
+      htmlEntities,
+      urlParser,
+      deviceInformation,
+      basicAuthGenerator,
+      metaTagGenerator,
+      otpCodeGeneratorAndValidator,
+      mimeTypes,
+      jwtParser,
+      keycodeInfo,
+      slugifyString,
+      htmlWysiwygEditor,
+      userAgentParser,
+      httpStatusCodes,
+      jsonDiff,
+      safelinkDecoder,
+    ],
   },
   {
-    name: 'Crypto',
-    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, ulidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser, pdfSignatureChecker],
+    name: 'Images and videos',
+    components: [qrCodeGenerator, wifiQrCodeGenerator, svgPlaceholderGenerator, cameraRecorder],
+  },
+  {
+    name: 'Development',
+    components: [
+      gitMemo,
+      randomPortGenerator,
+      crontabGenerator,
+      jsonViewer,
+      jsonMinify,
+      jsonToCsv,
+      sqlPrettify,
+      chmodCalculator,
+      dockerRunToDockerComposeConverter,
+      xmlFormatter,
+      yamlViewer,
+      emailNormalizer,
+      regexTester,
+      regexMemo,
+    ],
+  },
+  {
+    name: 'Network',
+    components: [ipv4SubnetCalculator, ipv4AddressConverter, ipv4RangeExpander, macAddressLookup, macAddressGenerator, ipv6UlaGenerator],
   },
   {
     name: 'Math',
@@ -185,14 +173,26 @@ export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Measurement',
     components: [chronometer, temperatureConverter, benchmarkBuilder],
-  }, 
+  },
+  {
+    name: 'Text',
+    components: [
+      loremIpsumGenerator,
+      textStatistics,
+      emojiPicker,
+      stringObfuscator,
+      textDiff,
+      numeronymGenerator,
+      asciiTextDrawer,
+    ],
+  },
   {
     name: 'Data',
     components: [phoneParserAndFormatter, ibanValidatorAndParser],
   },
 ];
 
-export const tools = toolsByCategory.flatMap(({ components }) => components);
-export const toolsWithCategory = toolsByCategory.flatMap(({ components, name }) =>
-  components.map(tool => ({ category: name, ...tool })),
+export const toolsBackup = toolsByCategoryBackup.flatMap(({ components }) => components);
+export const toolsWithCategoryBackup = toolsByCategoryBackup.flatMap(({ components, name }) =>
+  components.map(toolBackup => ({ category: name, ...toolBackup })),
 );

@@ -7,6 +7,7 @@ function defineThemes<Theme>(themes: { light: Theme; dark: Theme }) {
     themes,
     useTheme() {
       const styleStore = useStyleStore();
+      styleStore.isDarkTheme=true;
       return computed(() => themes[styleStore.isDarkTheme ? 'dark' : 'light']);
     },
   };

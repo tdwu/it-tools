@@ -36,8 +36,8 @@ const tools = computed<ToolCategory[]>(() => [
   <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
     <template #sider>
       <RouterLink to="/" class="hero-wrapper">
-        <HeroGradient class="gradient" />
-        <div class="text-wrapper">
+       <!--<HeroGradient class="gradient" />--> 
+        <!-- <div class="text-wrapper">
           <div class="title">
             IT - TOOLS
           </div>
@@ -45,10 +45,10 @@ const tools = computed<ToolCategory[]>(() => [
           <div class="subtitle">
             {{ $t('home.subtitle') }}
           </div>
-        </div>
+        </div>--> 
       </RouterLink>
 
-      <div class="sider-content">
+     <!--  <div class="sider-content">--> 
         <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
           <locale-selector w="90%" />
 
@@ -58,7 +58,7 @@ const tools = computed<ToolCategory[]>(() => [
         </div>
 
         <CollapsibleToolMenu :tools-by-category="tools" />
-
+   <!-- 
         <div class="footer">
           <div>
             IT-Tools
@@ -86,9 +86,11 @@ const tools = computed<ToolCategory[]>(() => [
             </c-link>
           </div>
         </div>
+     
       </div>
+       --> 
     </template>
-
+    
     <template #content>
       <div flex items-center justify-center gap-2>
         <c-button
@@ -115,26 +117,14 @@ const tools = computed<ToolCategory[]>(() => [
         <command-palette />
 
         <locale-selector v-if="!styleStore.isSmallScreen" />
-
+        <!-- 
         <div>
           <NavbarButtons v-if="!styleStore.isSmallScreen" />
-        </div>
+        </div> -->
 
-        <c-tooltip position="bottom" :tooltip="$t('home.support')">
-          <c-button
-            round
-            href="https://www.buymeacoffee.com/cthmsst"
-            rel="noopener"
-            target="_blank"
-            class="support-button"
-            :bordered="false"
-            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
-          >
-            {{ $t('home.buyMeACoffee') }}
-            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-          </c-button>
-        </c-tooltip>
+    
       </div>
+      
       <slot />
     </template>
   </MenuLayout>

@@ -13,15 +13,13 @@ const height1 = ref("calc(100vh - 26px  - 26px - 42px - 10px)")
 watch(() => router.currentRoute.value.path,
   (toPath) => {
     const currentRoute = router.currentRoute.value
-    //要执行的方法
-    //query
-    let qUrl = currentRoute.meta.query.url; 
-    //params
-    let pUrl = currentRoute.meta.params.url;
-    url.value = pUrl
+    if(currentRoute.meta&&currentRoute.meta.params){ 
+      let pUrl = currentRoute.meta.params.url;
+      url.value = pUrl
 
-    let targetName = currentRoute.path;
-    console.log("参数1", qUrl, pUrl, targetName, currentRoute)    
+      let targetName = currentRoute.path;
+      console.log("参数1",  pUrl, targetName, currentRoute)    
+    }
   }
   ,{ immediate: true, deep: true }
 )

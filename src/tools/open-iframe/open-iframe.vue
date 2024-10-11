@@ -1,11 +1,15 @@
 <script setup lang="ts">  
- 
-import { useRouter } from 'vue-router'
 import { onMounted,onUnmounted,ref } from 'vue'
-const route = useRoute()
-const url = ref("/")
+import { useStyleStore } from '@/stores/style.store';
+import { useRouter } from 'vue-router'
 
+const styleStore = useStyleStore();
 const router = useRouter()
+const url = ref("/")
+const width1 = ref("calc(100vw - 240px - 26px - 26px)")
+const width2 = ref("calc(100vw  - 26px - 26px)")
+const height1 = ref("calc(100vh - 26px  - 26px - 42px - 10px)")
+
 watch(() => router.currentRoute.value.path,
   (toPath) => {
     const currentRoute = router.currentRoute.value
@@ -19,11 +23,14 @@ watch(() => router.currentRoute.value.path,
     let targetName = currentRoute.path;
     console.log("参数1", qUrl, pUrl, targetName, currentRoute)    
   }
-  ,{immediate: true,deep: true}
+  ,{ immediate: true, deep: true }
 )
 
 onMounted(() => {
-  document.querySelector('.tool-layout').style.display = 'none'; 
+  let toolLayout = document.querySelector('.tool-layout')
+  toolLayout && (toolLayout.style.display = 'none'); 
+
+  // const route = useRoute()
 
   // //query
   // let qUrl = route.meta.query.url; 
@@ -32,11 +39,13 @@ onMounted(() => {
   // url.value = pUrl
 
   // let targetName = route.path;
-  // console.log("参数2", qUrl, pUrl, targetName, route)    
+  // console.log("参数2", qUrl, pUrl, targetName, route)   
+
 })
 
 onUnmounted(()=>{
-  document.querySelector('.tool-layout').style.display = 'block'; 
+  let toolLayout = document.querySelector('.tool-layout')
+  toolLayout && (toolLayout.style.display = 'block');   
 }) 
 
 
@@ -45,7 +54,11 @@ onUnmounted(()=>{
 
 <template>
   <div>
-    <iframe id="bi_iframe" :src="url" style="width:calc(100vw - 240px);height:calc(100vh - 26px  - 26px - 42px - 10px);margin-top:10px;" frameborder="0" scrolling="auto"></iframe>
+    <iframe id="bi_iframe" :src="url" 
+    :style="{width:!styleStore.isMenuCollapsed?width1:width2, height:height1}"
+    style="margin-top:10px; padding:2px; border: 1px solid #2e2e2e;" 
+    frameborder="0"
+    scrolling="auto"></iframe>
   </div>
 </template>
 

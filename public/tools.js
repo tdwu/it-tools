@@ -2,9 +2,11 @@
   {
     name: 'Development',
     components: [
-      {name:'文件夹',path:'/open-browser',type:'openIframe',url:'/console?tt=123'},
-      {name:'JSON查看器',path:'/open-json',type:'openIframe',url:'/console/jsonView/editor.html'},
-      {name:'画板',path:'/open-dw',type:'openUrl',url:'/console/excalidraw/editor.html',description:'新界面打开画布,可开始画图啦.....'},
+      {name:'知识库',path:'/open-knowledge',type:'openIframe',url:'/',description:'个人博客, 记录了一些开发、运维经验'},
+      {name:'密码箱',path:'/open-pwd',type:'openIframe',url:'/views/cmd.html',description:'记录常用的系统地址、密码，方便复制粘贴'},
+      {name:'文件夹',path:'/open-browser',type:'openIframe',url:'/console?tt=123456',description:'文件管理器：方便查看阅读文件、编辑特殊格式文件、播放视频文件'},
+      {name:'JSON查看器',path:'/open-json',type:'openIframe',url:'/console/jsonView/editor.html',description:'json文件查看器：方便结构化查看阅读json文件'},
+      {name:'画板',path:'/open-dw',type:'openUrl',url:'/console/excalidraw/editor.html',description:'用于绘制流程图、架构图、思维导图等'},
       'listConverter', 
       'urlParser',
       'urlEncoder',

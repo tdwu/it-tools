@@ -92,6 +92,7 @@ watch(
 );
 
 function resizeTextarea() {
+  console.log('resizeTextarea', inputWrapperRef)
   if (!textareaRef.value || !inputWrapperRef.value) {
     return;
   }

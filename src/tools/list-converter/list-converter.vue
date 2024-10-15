@@ -20,7 +20,7 @@ const conversionConfig = useStorage<ConvertOptions>('list-converter:conversionCo
   lowerCase: false,
   trimItems: true,
   removeDuplicates: true,
-  keepLineBreaks: false,
+  keepLineBreaks: true,
   itemPrefix: '',
   itemSuffix: '',
   listPrefix: '',
@@ -41,14 +41,14 @@ function transformer(value: string) {
       <c-card>
         <div flex>
           <div>
-            <n-form-item label="Trim list items" label-placement="left" label-width="150" :show-feedback="false" mb-2>
+            <n-form-item label="端头去空" label-placement="left" label-width="150" :show-feedback="false" mb-2>
               <n-switch v-model:value="conversionConfig.trimItems" />
             </n-form-item>
-            <n-form-item label="Remove duplicates" label-placement="left" label-width="150" :show-feedback="false" mb-2>
+            <n-form-item label="删除重复项" label-placement="left" label-width="150" :show-feedback="false" mb-2>
               <n-switch v-model:value="conversionConfig.removeDuplicates" data-test-id="removeDuplicates" />
             </n-form-item>
             <n-form-item
-              label="Convert to lowercase"
+              label="转小写"
               label-placement="left"
               label-width="150"
               :show-feedback="false"
@@ -56,14 +56,14 @@ function transformer(value: string) {
             >
               <n-switch v-model:value="conversionConfig.lowerCase" />
             </n-form-item>
-            <n-form-item label="Keep line breaks" label-placement="left" label-width="150" :show-feedback="false" mb-2>
+            <n-form-item label="保留换行符" label-placement="left" label-width="150" :show-feedback="false" mb-2>
               <n-switch v-model:value="conversionConfig.keepLineBreaks" />
             </n-form-item>
           </div>
           <div flex-1>
             <c-select
               v-model:value="conversionConfig.sortList"
-              label="Sort list"
+              label="排序"
               label-position="left"
               label-width="120px"
               label-align="right"
@@ -77,7 +77,7 @@ function transformer(value: string) {
 
             <c-input-text
               v-model:value="conversionConfig.separator"
-              label="Separator"
+              label="分隔符"
               label-position="left"
               label-width="120px"
               label-align="right"
@@ -85,19 +85,19 @@ function transformer(value: string) {
               placeholder=","
             />
 
-            <n-form-item label="Wrap item" label-placement="left" label-width="120" :show-feedback="false" mb-2>
+            <n-form-item label="项包裹符" label-placement="left" label-width="120" :show-feedback="false" mb-2>
               <c-input-text
                 v-model:value="conversionConfig.itemPrefix"
-                placeholder="Item prefix"
+                placeholder="前缀字符"
                 test-id="itemPrefix"
               />
               <c-input-text
                 v-model:value="conversionConfig.itemSuffix"
-                placeholder="Item suffix"
+                placeholder="后缀字符"
                 test-id="itemSuffix"
               />
             </n-form-item>
-            <n-form-item label="Wrap list" label-placement="left" label-width="120" :show-feedback="false" mb-2>
+            <n-form-item label="整体包裹符" label-placement="left" label-width="120" :show-feedback="false" mb-2>
               <c-input-text
                 v-model:value="conversionConfig.listPrefix"
                 placeholder="List prefix"
@@ -115,9 +115,9 @@ function transformer(value: string) {
     </div>
   </div>
   <format-transformer
-    input-label="Your input data"
-    input-placeholder="Paste your input data here..."
-    output-label="Your transformed data"
+    input-label="输入区："
+    input-placeholder="请输入需要转换的数据..."
+    output-label="结果区："
     :transformer="transformer"
   />
 </template>
